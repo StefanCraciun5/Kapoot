@@ -12,6 +12,8 @@ function initWindow() {
         },
     });
 
+    
+
     // Electron Build Path
     const path = `file://${__dirname}/dist/client/index.html`;
     appWindow.loadURL(path);
@@ -25,6 +27,7 @@ function initWindow() {
         appWindow = null;
     });
 }
+
 
 app.on('ready', initWindow);
 
