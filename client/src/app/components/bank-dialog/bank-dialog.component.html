@@ -1,0 +1,16 @@
+<div class="package">
+    <div class="package2">
+        <h1>Banque de questions</h1>
+        <ul *ngFor="let question of questions; let i = index">
+            <li (click)="toggleSelect(i)" [ngClass]="{ 'selected-question': question.selected }">
+                <span>
+                    <p>{{ i + 1 }}: {{ question.question.question }} ({{ question.question.choices.length }} options)</p>
+                </span>
+            </li>
+        </ul>
+        <button class="close" (click)="closeDialog([])"><p>Fermer</p></button>
+        <button class="export" *ngIf="anythingSelected" (click)="export()">
+            <p>Exporter</p>
+        </button>
+    </div>
+</div>

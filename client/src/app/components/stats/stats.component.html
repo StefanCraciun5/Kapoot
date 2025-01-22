@@ -1,0 +1,18 @@
+ <div class="box">
+    <p>stats works!</p>
+    <div class="stats">
+        <h3>Players That Have Answered</h3>
+        <ul>
+            <li *ngFor="let player of answeredPlayers">{{ player.username }}</li>
+        </ul>
+    </div>
+
+    <div  class="histogram">
+        <h3>Choice Histogram</h3>
+        <div *ngFor="let choice of playerAnswers; let j = index" class="histogram-bar">
+            <span *ngIf="currentQuestion && currentQuestion.choices[j]?.isCorrect" style="display: inline;">Good </span>
+            <span>choice {{ choiceLabels[j] }}: {{ choice }}</span>
+            <mat-progress-bar mode="determinate" [value]="playerAnswers[j]"></mat-progress-bar>
+        </div>
+    </div>
+</div> 

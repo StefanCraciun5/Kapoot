@@ -1,0 +1,467 @@
+$colors: #ff5733, #ffbd33, #33ff57, #33b6ff, #8933ff; // Predefined list of colors
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 30pt;
+    margin: auto;
+    background: linear-gradient(to right, #e81cff 30%, #40c9ff 70%, #40c9ff 1000%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Make the text color transparent */
+    font-family: italic, sans-serif; /* Adjust font family as needed */
+}
+
+.list {
+    margin: auto;
+    padding: 20pt 0 50pt 0;
+}
+
+.quiz-list {
+    display: inline-grid;
+    padding: 10pt;
+}
+
+.upload-quiz {
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Center text horizontally */
+    position: relative;
+}
+
+.options {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+    padding: 15pt;
+}
+/* Tooltip */
+
+.tooltip {
+    z-index: 1;
+    position: absolute;
+    right: -105px;
+    opacity: 0;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.2s;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+}
+
+.tooltip::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: rgb(12, 12, 12);
+    background-size: 1000%;
+    background-position: center;
+    transform: rotate(45deg);
+    left: -5%;
+    transition-duration: 0.3s;
+}
+
+/* Cards */
+.card {
+    // width: fit-content;
+    // height: fit-content;
+    background: #07182e;
+    position: relative;
+    border-radius: 20px;
+    align-items: center;
+    padding: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-image: linear-gradient(
+            45deg,
+            nth($colors, random(length($colors))),
+            nth($colors, random(length($colors))),
+            nth($colors, random(length($colors)))
+        )
+        1;
+    border-image-slice: 1;
+}
+
+.card p {
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    margin: 10px;
+}
+
+.card button {
+    color: white;
+    background: black;
+    margin: 1px;
+}
+
+.card .info .length {
+    visibility: hidden;
+}
+
+.card .info .modif {
+    visibility: hidden;
+}
+
+.card:hover {
+    transition: all 0.3s ease-out;
+    background: #3f3f3f;
+    cursor: pointer;
+}
+
+.card:hover .info p {
+    transition: all 0.3s ease-in;
+    color: red;
+}
+
+.card:hover .info .modif {
+    transition: all 0.3s ease-in;
+    visibility: visible;
+}
+
+.card:hover .info .length {
+    transition: all 0.3s ease-in;
+    visibility: visible;
+}
+
+/* Download */
+
+.Btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(27, 27, 27);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+    padding: 10pt;
+}
+
+.svgIcon {
+    fill: rgb(214, 178, 255);
+}
+
+.icon2 {
+    width: 18px;
+    height: 5px;
+    border-bottom: 2px solid rgb(182, 143, 255);
+    border-left: 2px solid rgb(182, 143, 255);
+    border-right: 2px solid rgb(182, 143, 255);
+}
+
+.Btn:hover .tooltip {
+    opacity: 1;
+    transition-duration: 0.3s;
+}
+
+.Btn:hover {
+    background-color: rgb(150, 94, 255);
+    transition-duration: 0.3s;
+}
+
+.Btn:hover .icon2 {
+    border-bottom: 2px solid rgb(235, 235, 235);
+    border-left: 2px solid rgb(235, 235, 235);
+    border-right: 2px solid rgb(235, 235, 235);
+}
+
+.Btn:hover .svgIcon {
+    fill: rgb(255, 255, 255);
+    animation: slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* Visible */
+
+[id^='checkboxInput'] {
+    display: none;
+    padding: 10pt;
+}
+
+.visible {
+    position: relative;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+}
+
+.visible:hover .tooltip {
+    opacity: 1;
+    transition-duration: 0.3s;
+}
+
+.visible:hover .eye-open {
+    stroke: white;
+    fill: black;
+    transition: all 0.3s ease-in;
+}
+
+.visible:hover .eye-close {
+    stroke: white;
+    fill: black;
+    transition: all 0.3s ease-in;
+}
+
+.eye-open {
+    stroke: black;
+    fill: white;
+    transition: all 0.3s ease-in;
+}
+
+.eye-close {
+    stroke: black;
+    fill: white;
+    transition: all 1s ease-in;
+}
+
+/* Delete button */
+
+.bin-button {
+    position: relative;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: None;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    padding: 10pt;
+}
+.bin-bottom {
+    width: 15px;
+}
+.bin-top {
+    width: 17px;
+    transform-origin: right;
+    transition-duration: 0.3s;
+}
+.bin-button:hover .bin-top {
+    transform: rotate(45deg);
+}
+.card .bin-button:hover {
+    background-color: red;
+}
+.bin-button:active {
+    transform: scale(0.9);
+}
+
+.bin-button:hover .tooltip {
+    opacity: 1;
+    transition-duration: 0.3s;
+}
+
+/* Upload quiz button */
+
+.file-name-placeholder {
+    margin-left: 10px;
+    font-style: italic;
+}
+
+.file-upload-form {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; /* Ensure centering without overlapping */
+    padding: 10pt;
+}
+
+.file-upload-label input {
+    display: none;
+}
+
+.file-upload-label svg {
+    height: 50px;
+    fill: rgb(82, 82, 82);
+    margin-bottom: 20px;
+}
+
+.file-upload-label {
+    cursor: pointer;
+    background-color: #ddd;
+    padding: 30px 70px;
+    border-radius: 40px;
+    border: 2px dashed rgb(82, 82, 82);
+    box-shadow: 0 0 200px -50px rgba(0, 0, 0, 0.719);
+    position: relative;
+}
+
+.file-upload-design {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.browse-button {
+    background-color: rgb(82, 82, 82);
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.browse-button:hover {
+    background-color: rgb(14, 14, 14);
+}
+
+/* Explore button */
+
+/* Yoinked from CodePen, but improved the animation
+so that it is smooth among other more minor things */
+
+.codepen-button {
+    display: block;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 3px;
+    isolation: isolate;
+    margin: auto; /* Ensure centering without overlapping */
+}
+
+.codepen-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400%;
+    height: 100%;
+    background: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+    background-size: 25% 100%;
+    animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop
+        0.75s linear infinite;
+    animation-play-state: paused;
+    translate: -5% 0%;
+    transition: translate 0.25s ease-out;
+}
+
+.codepen-button:hover::before {
+    animation-play-state: running;
+    transition-duration: 0.75s;
+    translate: 0 0;
+}
+
+@keyframes an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop {
+    to {
+        transform: translateX(-25%);
+    }
+}
+
+.codepen-button span {
+    position: relative;
+    display: block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    background: #000;
+    border-radius: 3px;
+    height: 100%;
+}
+
+/* quiz options */
+
+.quiz-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-quiz {
+    width: 170pt;
+    height: 170pt;
+    border: rgb(151, 151, 151) 2pt dotted;
+    border-radius: 25pt;
+    margin: auto 10pt auto 10pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-quiz:hover {
+    cursor: pointer;
+}
+
+.add-quiz:hover .svg {
+    animation: addHover 0.3s forwards;
+}
+
+.add-quiz:hover .description-add {
+    opacity: 0;
+}
+
+.svg {
+    --svg-fill: rgb(151, 151, 151); /* Default fill color */
+    transition: all fill 0.3s ease;
+}
+
+.description-add {
+    transition: 0.3s ease;
+    color: rgb(151, 151, 151);
+}
+
+@keyframes addHover {
+    0% {
+        --svg-fill: rgb(151, 151, 151);
+        width: 60px;
+        height: 60px;
+    }
+    100% {
+        --svg-fill: url(#gradient);
+        width: 100px;
+        height: 100px;
+    }
+}

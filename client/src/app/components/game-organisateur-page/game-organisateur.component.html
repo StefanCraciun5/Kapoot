@@ -1,0 +1,62 @@
+<div class="content-org">
+    <div class="important">
+        <div class="current-question-content">
+            <div class="current-question-info" *ngIf="currentQuestion">
+                <p class="title">{{ currentQuestion.question }}</p>
+                <p class="points">{{ currentQuestion.points }} points</p>
+            </div>
+            <div class="timer-controls" *ngIf="!questionOver && !isCorrecting">
+                <label class="container">
+                    <input checked="checked" type="checkbox" (click)="toggleTimer()" />
+                    <svg viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="play">
+                        <path
+                            d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
+                        ></path>
+                    </svg>
+                    <svg viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="pause">
+                        <path
+                            d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"
+                        ></path>
+                    </svg>
+                </label>
+                <button class="Btn" (click)="panicMode()">
+                    PANIC
+                    <svg class="svg" viewBox="0 0 24 24" height="24" width="24">
+                        <path
+                            d="M15.91 13.34l2.636-4.026-.454-.406-3.673 3.099c-.675-.138-1.402.068-1.894.618-.736.823-.665 2.088.159 2.824.824.736 2.088.665 2.824-.159.492-.55.615-1.295.402-1.95zm-3.91-10.646v-2.694h4v2.694c-1.439-.243-2.592-.238-4 0zm8.851 2.064l1.407-1.407 1.414 1.414-1.321 1.321c-.462-.484-.964-.927-1.5-1.328zm-18.851 4.242h8v2h-8v-2zm-2 4h8v2h-8v-2zm3 4h7v2h-7v-2zm21-3c0 5.523-4.477 10-10 10-2.79 0-5.3-1.155-7.111-3h3.28c1.138.631 2.439 1 3.831 1 4.411 0 8-3.589 8-8s-3.589-8-8-8c-1.392 0-2.693.369-3.831 1h-3.28c1.811-1.845 4.321-3 7.111-3 5.523 0 10 4.477 10 10z"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <div class="time">
+                <div class="cloader">
+                    <div class="clface">
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div id="h1" class="hand"></div>
+                        <div id="main" class="pin"></div>
+                    </div>
+                </div>
+                <p class="seconds-paragraph">
+                    <em class="seconds" [ngClass]="{ fast: timer < 20, medium: timer >= 20 && timer < 40, slow: timer >= 40 }">
+                        {{ timer }}
+                    </em>
+                </p>
+            </div>
+            <app-current-question-info *ngIf="!quizOver" class="histogram" [choices]="choices" [playerAnswers]="playerAnswers">
+            </app-current-question-info>
+        </div>
+        <app-players-list *ngIf="!quizOver" class="player-list" [players]="players" [isAdmin]="true"></app-players-list>
+    </div>
+    <div *ngIf="!quizOver" class="preview">
+        <app-preview-question
+            [previewQuestion]="previewQuestion"
+            [questionOver]="questionOver"
+            (startNextQuestion)="nextQuestion()"
+            (skipNextQuestion)="skipQuestion()"
+            (showResults)="finishQuiz()"
+        ></app-preview-question>
+    </div>
+</div>

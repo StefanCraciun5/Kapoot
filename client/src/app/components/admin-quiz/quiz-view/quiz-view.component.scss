@@ -1,0 +1,256 @@
+.title-element {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.title {
+    background: linear-gradient(to right, red, gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Make the text color transparent */
+    font-size: 2em; /* Adjust font size as needed */
+    font-weight: bold; /* Adjust font weight as needed */
+    text-transform: capitalize;
+}
+
+.quiz-view {
+    color: white;
+}
+
+.description {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    font-style: italic;
+}
+
+.quote-icon {
+    height: 16pt;
+    width: 16pt;
+    margin: 0 5pt 0 10pt;
+}
+
+.time {
+    display: flex;
+    max-width: 50pt;
+    max-height: 50pt;
+    justify-content: center;
+    margin: auto;
+}
+
+.seconds {
+    font-size: 18pt;
+}
+
+.nothing {
+    color: white;
+}
+
+.fast {
+    color: red;
+}
+
+.medium {
+    color: yellow;
+}
+
+.slow {
+    color: lawngreen;
+}
+
+.visible {
+    max-width: 15px;
+    max-height: 15px;
+}
+
+.last-modified {
+    display: flex;
+    justify-content: center;
+    margin: 20pt auto;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+}
+
+.date {
+    color: #00dbde;
+    margin: 0 0 0 5pt;
+}
+
+.quiz-view:hover .last-modified {
+    opacity: 1;
+}
+
+.visible-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Ensure the div is circular */
+    margin: 10pt 10pt;
+    animation: ping 2s infinite;
+}
+
+.visible-dot.red {
+    background-color: red;
+}
+
+.visible-dot.green {
+    background-color: greenyellow;
+}
+
+@keyframes ping {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.tooltip {
+    opacity: 0;
+    position: relative;
+    bottom: -25pt; /* Adjust the distance from the dot */
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5pt;
+    border-radius: 10pt;
+    white-space: nowrap; /* Prevent line breaks */
+    transition: opacity 0.3s ease-in;
+}
+
+.visible:hover .tooltip {
+    opacity: 1;
+}
+
+/* Timer Icon */
+
+.cloader {
+    width: 10em;
+    height: 10em;
+    border: 10pt solid white;
+    border-radius: 50%;
+    margin: -70pt -70pt;
+    position: relative;
+    padding: 2rem;
+    scale: 0.1;
+}
+
+.clface {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px);
+}
+
+.top {
+    height: 20pt;
+    width: 10pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -26pt;
+    margin-left: 52pt;
+}
+
+.bottom {
+    height: 20pt;
+    width: 10pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: 120pt;
+    margin-left: 52pt;
+}
+
+.left {
+    height: 10pt;
+    width: 20pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -78pt;
+    margin-left: -28pt;
+}
+
+.right {
+    height: 10pt;
+    width: 20pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -15pt;
+    margin-left: 110pt;
+    transform: rotate(90);
+}
+
+.clsface {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-left: 24px;
+    margin-top: 15px;
+    border-radius: 6em;
+    border: 2px solid #636363;
+}
+
+.hand {
+    width: 65%;
+    height: 10pt;
+    background-color: white;
+    border-radius: 3em;
+    border: none;
+    position: absolute;
+    top: 70%;
+    left: -15%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+}
+
+.pin {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sub {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background: #636363;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#h1 {
+    animation: rotate 4s linear infinite;
+}
+
+#h2 {
+    width: 45%;
+    left: 5%;
+    top: 45%;
+    background-color: #636363;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(90deg);
+    }
+
+    to {
+        transform: rotate(450deg);
+    }
+}

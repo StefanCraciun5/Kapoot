@@ -1,0 +1,11 @@
+<span>
+    <h2>Ajouter une Question</h2>
+    <div *ngIf="renderer !== undefined">
+        <app-admin-question
+            [questionRenderer]="renderer"
+            [defaultState]="true"
+            [context]="context"
+            [quizRenderer]="quizRenderer"
+        ></app-admin-question>
+    </div>
+</span>

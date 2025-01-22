@@ -1,0 +1,632 @@
+.is-valid {
+    color: red;
+}
+
+.card {
+    --border-radius: 1.25rem;
+    --border-width: 0.5rem;
+
+    position: relative;
+
+    width: 250px;
+    height: fit-content;
+    border-radius: var(--border-radius);
+    padding: 20px;
+
+    background: rgb(5, 6, 45);
+    color: white;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    margin: calc(-1 * var(--border-width));
+    border-radius: calc(var(--border-radius) + var(--border-width));
+}
+
+/* option valid */
+
+.checkbox-wrapper input[type='checkbox'] {
+    display: none;
+    visibility: hidden;
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper *::before,
+.checkbox-wrapper *::after {
+    box-sizing: border-box;
+}
+
+.checkbox-wrapper .toggleButton {
+    cursor: pointer;
+    display: block;
+    transform-origin: 50% 50%;
+    transform-style: preserve-3d;
+    transition: transform 0.14s ease;
+}
+
+.checkbox-wrapper .toggleButton:active {
+    transform: rotateX(30deg);
+}
+
+.checkbox-wrapper .toggleButton input + div {
+    margin: 2pt auto auto 4pt;
+    border: 3px solid rgba(0, 89, 255, 0.288);
+    border-radius: 50%;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+}
+.checkbox-wrapper .toggleButton input:checked + div {
+    background-color: green;
+}
+
+.checkbox-wrapper .toggleButton input + div svg {
+    fill: none;
+    stroke-width: 3.6;
+    stroke: rgb(0, 0, 0);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    right: -3px;
+    bottom: -3px;
+    z-index: 1;
+    stroke-dashoffset: 124.6;
+    stroke-dasharray: 0 162.6 133 29.6;
+    transition: all 0.4s ease 0s;
+}
+
+.checkbox-wrapper .toggleButton input + div:before,
+.checkbox-wrapper .toggleButton input + div:after {
+    content: '';
+    width: 3px;
+    height: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 5px;
+    background: red;
+}
+
+.checkbox-wrapper .toggleButton input + div:before {
+    opacity: 0;
+    transform: scale(0.3) translate(-50%, -50%) rotate(45deg);
+    -webkit-animation: bounceInBefore-44 0.3s linear forwards 0.3s;
+    animation: bounceInBefore-44 0.3s linear forwards 0.3s;
+}
+
+.checkbox-wrapper .toggleButton input + div:after {
+    opacity: 0;
+    transform: scale(0.3) translate(-50%, -50%) rotate(-45deg);
+    -webkit-animation: bounceInAfter-44 0.3s linear forwards 0.3s;
+    animation: bounceInAfter-44 0.3s linear forwards 0.3s;
+}
+
+.checkbox-wrapper .toggleButton input:checked + div svg {
+    stroke-dashoffset: 162.6;
+    stroke-dasharray: 0 162.6 28 134.6;
+    transition: all 0.4s ease 0.2s;
+    stroke: white;
+}
+
+.checkbox-wrapper .toggleButton input:checked + div:before {
+    opacity: 0;
+    transform: scale(0.3) translate(-50%, -50%) rotate(45deg);
+    -webkit-animation: bounceInBeforeDont-44 0.3s linear forwards 0s;
+    animation: bounceInBeforeDont-44 0.3s linear forwards 0s;
+    background-color: white;
+}
+
+.checkbox-wrapper .toggleButton input:checked + div:after {
+    opacity: 0;
+    transform: scale(0.3) translate(-50%, -50%) rotate(-45deg);
+    -webkit-animation: bounceInAfterDont-44 0.3s linear forwards 0s;
+    animation: bounceInAfterDont-44 0.3s linear forwards 0s;
+    background-color: white;
+}
+
+@-webkit-keyframes bounceInBefore-44 {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(45deg);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(45deg);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(0.89) translate(-50%, -50%) rotate(45deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+@keyframes bounceInBefore-44 {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(45deg);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(45deg);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(0.89) translate(-50%, -50%) rotate(45deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+@-webkit-keyframes bounceInAfter-44 {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(0.89) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+@keyframes bounceInAfter-44 {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(0.89) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+@-webkit-keyframes bounceInBeforeDont-44 {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+@keyframes bounceInBeforeDont-44 {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+@-webkit-keyframes bounceInAfterDont-44 {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+@keyframes bounceInAfterDont-44 {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+/* Delete */
+.bin-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    background-color: rgb(255, 95, 95);
+    cursor: pointer;
+    border: 3px solid rgb(255, 201, 201);
+    transition-duration: 0.3s;
+    scale: 0.5;
+    bottom: 10pt;
+}
+.bin-bottom {
+    width: 20px;
+}
+.bin-top {
+    width: 22px;
+    transform-origin: right;
+    transition-duration: 0.3s;
+}
+.bin-button:hover .bin-top {
+    transform: rotate(45deg);
+}
+.bin-button:hover {
+    background-color: rgb(255, 0, 0);
+}
+.bin-button:active {
+    transform: scale(0.9);
+}
+
+/* Options */
+.options-div {
+    width: fit-content;
+    height: fit-content;
+    position: relative; /* Ensure the container is positioned */
+    display: flex;
+    // border: 2pt solid white;
+    border-radius: 10pt;
+    padding: 20pt 0 0 10pt;
+    margin: 5pt auto 5pt auto;
+}
+
+.options-div:hover {
+    cursor: grab;
+}
+
+/* Add option button */
+.button-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.svgIcon {
+    width: 17px;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.button-icon:hover {
+    width: 120px;
+    border-radius: 50px;
+    transition-duration: 0.5s;
+    // background-color: forestgreen;
+    align-items: center;
+}
+
+.button-icon:hover .svgIcon {
+    width: 20px;
+    transition-duration: 0.5s;
+    transform: translateY(60%);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.button-icon.save::before {
+    display: none;
+    content: 'Sauvegarder';
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 2px;
+}
+
+.button-icon.return::before {
+    display: none;
+    content: 'Retour';
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 2px;
+}
+
+.button-icon.delete::before {
+    display: none;
+    content: 'Supprimer';
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 2px;
+}
+
+.button-icon.add::before {
+    display: none;
+    content: 'Option';
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 2px;
+}
+
+.button-icon:hover::before {
+    display: block;
+    padding-right: 10px;
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(0px);
+    transition-duration: 0.3s;
+}
+.add:hover {
+    background-color: forestgreen;
+}
+
+/* Save Button */
+.save:hover {
+    background-color: dodgerblue;
+}
+
+/* Return Button*/
+.return:hover {
+    background-color: purple;
+}
+
+/* Delete button */
+
+.delete:hover {
+    background-color: red;
+}
+
+/* Question Options"*/
+
+.question-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Option Text */
+
+.inputGroup {
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 190px;
+    position: relative;
+}
+
+.inputGroup.question-title {
+    max-width: 250px;
+}
+
+.inputGroup input {
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: transparent;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    color: white; /* Change text color to white */
+}
+
+.inputGroup label {
+    margin: 0 0 10pt 0;
+    font-size: 100%;
+    position: absolute;
+    top: -2em; /* Adjust label position above the input */
+    left: 0;
+    padding: 0.5em; /* Adjust padding for the label */
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+}
+
+.inputGroup input:focus ~ label {
+    transform: translateY(-50%) scale(0.9);
+    padding: 0.2em; /* Adjust padding for the label when input is focused */
+    background-color: #e8e8e8;
+}
+
+.inputGroup input:valid ~ label {
+    transform: translateY(-50%) scale(0.9);
+    padding: 0.2em; /* Adjust padding for the label when input is valid */
+    background-color: #e8e8e8;
+}
+
+.inputGroup input:focus,
+.inputGroup input:valid {
+    border-color: rgb(150, 150, 200);
+}
+
+.question-name {
+    margin: 20pt auto 10pt auto;
+}
+
+/* Points Slider */
+
+.PB-range-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    background: #d5dbe1;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+.PB-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.PB-range-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.16);
+    transition: 0.3s ease-in-out;
+}
+
+.PB-range-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.PB-range-slider-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2pt;
+    border-radius: 6pt;
+    border: 1px solid #c6cace;
+    box-shadow: 0 1pt 2pt 0 red;
+}
+
+/* question type */
+
+.switch {
+    /* Variables */
+    --switch_width: 2em;
+    --switch_height: 1em;
+    --thumb_color: #e8e8e8;
+    --track_color: #e8e8e8;
+    --track_active_color: #888;
+    --outline_color: #000;
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: var(--switch_width);
+    height: var(--switch_height);
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    box-sizing: border-box;
+    border: 2px solid var(--outline_color);
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--track_color);
+    transition: 0.15s;
+    border-radius: var(--switch_height);
+}
+
+.slider:before {
+    box-sizing: border-box;
+    position: absolute;
+    content: '';
+    height: var(--switch_height);
+    width: var(--switch_height);
+    border: 2px solid var(--outline_color);
+    border-radius: 100%;
+    left: -2px;
+    bottom: -2px;
+    background-color: var(--thumb_color);
+    transform: translateY(-0.2em);
+    box-shadow: 0 0.2em 0 var(--outline_color);
+    transition: 0.15s;
+}
+
+input:checked + .slider {
+    background-color: var(--track_active_color);
+}
+
+input:focus-visible + .slider {
+    box-shadow: 0 0 0 2px var(--track_active_color);
+}
+
+input:hover + .slider:before {
+    transform: translateY(-0.3em);
+    box-shadow: 0 0.3em 0 var(--outline_color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.2em);
+}
+
+input:hover:checked + .slider:before {
+    transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.3em);
+    box-shadow: 0 0.3em 0 var(--outline_color);
+}
+
+.question-type {
+    display: flex;
+    justify-content: center;
+}
+
+.q {
+    padding: 0 20pt 0 20pt;
+}
+
+.is-qrl,
+.is-qcm {
+    color: green;
+}

@@ -1,0 +1,41 @@
+<div class="game-question" *ngIf="quizStarted && currentQuestionIndex !== -1">
+    <div class="header">
+        <h2>{{ questions[currentQuestionIndex].question }}</h2>
+        <h3>Points for this question: {{ questions[currentQuestionIndex].points }}</h3>
+    </div>
+
+    <div class="timer">
+        <span>Time Remaining: {{ time }} seconds</span>
+    </div>
+
+    <div *ngIf="questions[currentQuestionIndex].type === 'MCQ'" class="options">
+        <div
+            class="option"
+            *ngFor="let choice of questions[currentQuestionIndex].choices; let i = index"
+            (click)="onChoiceClick(choice)"
+            [ngClass]="{ selected: isChoiceSelected(choice) }"
+        >
+            <p>{{ i + 1 }}. {{ choice.choice }}</p>
+        </div>
+    </div>
+
+    <div *ngIf="questions[currentQuestionIndex].type === 'LAQ'">
+        <textarea class="laq-answer-field" [(ngModel)]="laqanswer" placeholder="Please enter your answer." maxlength="200" required></textarea>
+        <div class="character-count">{{ laqanswer.length }}/200 characters</div>
+    </div>
+
+    <div class="feedback-and-submit">
+        <div class="feedback" *ngIf="!canChoose">
+            <h2 *ngIf="hasGoodAnswer; else wrongAnswer">Correct Answer!</h2>
+            <ng-template #wrongAnswer>
+                <h2>Incorrect Answer!</h2>
+            </ng-template>
+            <h4>Next question in {{ countdownSeconds }} seconds!</h4>
+        </div>
+        <button *ngIf="canChoose" class="btn-submit" (click)="validateAnswer()">Submit your answer</button>
+    </div>
+
+    <div class="footer">
+        <p>Total Points: {{ points }}</p>
+    </div>
+</div>

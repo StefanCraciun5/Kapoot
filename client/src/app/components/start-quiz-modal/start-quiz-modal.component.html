@@ -1,0 +1,100 @@
+<div class="modal">
+    <div class="start-quiz">
+        <div class="main-container">
+            <div class="game-list">
+                <p class="title">Liste de jeux</p>
+                <button class="Btn random" *ngIf="isRandomModeAvailable" (click)="randomGame()">
+                    Mode Aléatoire
+                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512" fill="white">
+                        <path
+                            fill="none"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="32"
+                            d="M448 341.37V170.61A32 32 0 0 0 432.11 143l-152-88.46a47.94 47.94 0 0 0-48.24 0L79.89 143A32 32 0 0 0 64 170.61v170.76A32 32 0 0 0 79.89 369l152 88.46a48 48 0 0 0 48.24 0l152-88.46A32 32 0 0 0 448 341.37"
+                        />
+                        <path
+                            fill="none"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="32"
+                            d="m69 153.99l187 110l187-110m-187 310v-200"
+                        />
+                        <ellipse cx="256" cy="152" fill="white" rx="24" ry="16" />
+                        <ellipse cx="208" cy="296" fill="white" rx="16" ry="24" />
+                        <ellipse cx="112" cy="328" fill="white" rx="16" ry="24" />
+                        <ellipse cx="304" cy="296" fill="white" rx="16" ry="24" />
+                        <ellipse cx="400" cy="240" fill="white" rx="16" ry="24" />
+                        <ellipse cx="304" cy="384" fill="white" rx="16" ry="24" />
+                        <ellipse cx="400" cy="328" fill="white" rx="16" ry="24" />
+                    </svg>
+                </button>
+                <div class="quiz-list">
+                    <div *ngFor="let quiz of quizzes; let i = index" (click)="onQuizClick(i)">
+                        <div class="quiz" [ngClass]="{ selected: isQuizSelected(i) }">{{ quiz.title }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-info" *ngIf="selectedQuiz" [ngClass]="{ render: selectedQuiz }">
+                <div class="quiz-info">
+                    <p class="quiz-title" id="title">{{ selectedQuiz.title }}</p>
+                    <p class="quiz-description" id="description">{{ selectedQuiz.description }}</p>
+                    <div class="time">
+                        <div class="cloader">
+                            <div class="clface">
+                                <div class="top"></div>
+                                <div class="bottom"></div>
+                                <div class="left"></div>
+                                <div class="right"></div>
+                                <div id="h1" class="hand"></div>
+                                <div id="main" class="pin"></div>
+                            </div>
+                        </div>
+                        <p
+                            class="timer"
+                            [ngClass]="{
+                                fast: selectedQuiz.duration < 20,
+                                medium: selectedQuiz.duration >= 20 && selectedQuiz.duration < 40,
+                                slow: selectedQuiz.duration >= 40
+                            }"
+                        >
+                            <em class="seconds">
+                                {{ selectedQuiz.duration }}
+                            </em>
+                        </p>
+                    </div>
+                </div>
+                <div class="question-list">
+                    <div class="list-title">
+                        <p class="question-list-title">Questions à jouer</p>
+                    </div>
+                    <div class="questions">
+                        <div id="questions" *ngFor="let question of questions; let i = index">
+                            <p>{{ i + 1 }}. {{ question.question }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="controls" *ngIf="selectedQuiz">
+        <button class="Btn test" (click)="testGame()">
+            Tester
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                    d="M16 1c0 .552-.447 1-1 1h-6c-.553 0-1-.448-1-1s.447-1 1-1h6c.553 0 1 .448 1 1zm4.759 19.498l-3.743-7.856c-1.041-2.186-2.016-4.581-2.016-7.007v-1.635h-2v2c.09 2.711 1.164 5.305 2.21 7.502l3.743 7.854c.143.302-.068.644-.377.644h-13.153c-.3 0-.522-.339-.376-.642l3.742-7.857c1.047-2.196 2.115-4.791 2.205-7.501l.006-2h-2v1.635c0 2.426-.975 4.82-2.016 7.006l-3.743 7.856c-.165.348-.241.708-.241 1.058 0 1.283 1.023 2.445 2.423 2.445h13.153c1.4 0 2.424-1.162 2.424-2.446 0-.35-.076-.709-.241-1.056zm-9.759-.998c0-.829-.672-1.5-1.5-1.5s-1.5.671-1.5 1.5.672 1.5 1.5 1.5 1.5-.671 1.5-1.5zm2-3.5c0-.553-.448-1-1-1-.553 0-1 .447-1 1s.447 1 1 1c.552 0 1-.447 1-1zm3 3c0-.552-.448-1-1-1-.553 0-1 .448-1 1s.447 1 1 1c.552 0 1-.448 1-1z"
+                />
+            </svg>
+        </button>
+        <button class="Btn play" (click)="startGame()">
+            Jouer
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                    d="M23.948.042c-.413-.028-.817-.042-1.214-.042-8.6 0-13.497 6.557-15.278 11.833l4.727 4.727c5.428-1.944 11.817-6.66 11.817-15.168 0-.44-.017-.89-.052-1.35zm-11.277 14.178l-2.883-2.883c1.221-2.859 4.691-8.945 12.199-9.32-.251 5.775-4.041 9.932-9.316 12.203zm5.471 1.538c-.547.373-1.09.71-1.628 1.011-.187.891-.662 1.842-1.351 2.652-.002-.576-.162-1.156-.443-1.738-.495.225-.966.418-1.414.588.66 1.709-.012 2.971-.915 4.154 1.296-.098 2.656-.732 3.728-1.805 1.155-1.155 1.967-2.823 2.023-4.862zm-11.82-6.469c-.579-.28-1.158-.438-1.732-.441.803-.681 1.744-1.153 2.626-1.345.314-.552.667-1.097 1.039-1.633-2.039.055-3.708.867-4.864 2.023-1.071 1.071-1.706 2.433-1.804 3.728 1.184-.904 2.446-1.576 4.155-.914.173-.471.366-.944.58-1.418zm7.738.663c-.391-.391-.391-1.023 0-1.414s1.023-.391 1.414 0c.391.392.391 1.024 0 1.415s-1.024.39-1.414-.001zm4.949-4.951c-.78-.78-2.047-.78-2.828 0-.781.781-.781 2.049 0 2.829.781.781 2.048.781 2.829 0 .78-.78.78-2.047-.001-2.829zm-1.908 1.911c-.273-.273-.273-.718 0-.99.271-.273.717-.273.99 0 .272.272.271.717 0 .99-.274.272-.718.272-.99 0zm-15.132 12.666l-.906-.906 5.208-5.188.906.906-5.208 5.188zm4.979 1.857l-.906-.906 3.636-3.664.906.906-3.636 3.664zm-6.042 2.565l-.906-.906 6.448-6.438.906.906-6.448 6.438z"
+                />
+            </svg>
+        </button>
+    </div>
+</div>

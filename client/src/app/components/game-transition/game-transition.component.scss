@@ -1,0 +1,339 @@
+.transition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: white;
+}
+
+.countdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+    color: white;
+}
+
+.cooldown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Random message */
+$messages: ('🏎️', 'DU DU DU DU! MAX VERSTAPPEN!', 'En attente des autres joueurs...', 'Alpine cherche de nouveaux pilotes...');
+$message-length: length($messages);
+
+.cooldown-msg {
+    margin: 30pt auto 0 auto;
+    padding: 10pt;
+}
+
+.cooldown-msg::before {
+    content: '';
+    margin: 30pt auto 0 auto;
+    font-size: 14pt;
+    animation: toggleMSG 8s infinite;
+}
+
+@keyframes toggleMSG {
+    0% {
+        $index: 4;
+        content: nth($messages, $index);
+    }
+    25% {
+        $index: 1;
+        content: nth($messages, $index);
+    }
+    50% {
+        $index: 2;
+        content: nth($messages, $index);
+    }
+    75% {
+        $index: 3;
+        content: nth($messages, $index);
+    }
+    100% {
+        $index: 4;
+        content: nth($messages, $index);
+    }
+}
+/* Cool Down loader */
+.loader {
+    --size-loader: 50px;
+    --size-orbe: 10px;
+    width: var(--size-loader);
+    height: var(--size-loader);
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.orbe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    --delay: calc(var(--index) * 0.1s);
+    animation: orbit7456 ease-in-out 1.5s var(--delay) infinite;
+    opacity: calc(1 - calc(0.2 * var(--index)));
+}
+
+.orbe::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: var(--size-orbe);
+    height: var(--size-orbe);
+    background-color: #3ae374;
+    box-shadow: 0px 0px 20px 2px #3ae374;
+    border-radius: 50%;
+}
+
+@keyframes orbit7456 {
+    0% {
+    }
+
+    80% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Answer card */
+
+.card {
+    margin: 18pt;
+    width: 250pt;
+    height: 250pt;
+    border-radius: 20pt;
+    border: white solid 2pt;
+    padding: 5pt;
+    background-color: rgb(254, 65, 65);
+}
+
+.correct {
+    background-color: green;
+}
+
+.card__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    color: white;
+}
+
+.msg-title::before {
+    margin: 10pt;
+    content: 'Incorrect';
+    font-size: 15pt;
+}
+
+.correct .card__content .status .msg-title::before {
+    content: 'Bonne Réponse!';
+}
+
+.answers {
+    margin: -5pt 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cross,
+.checkmark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Timer */
+.time {
+    position: relative;
+    top: 0;
+    display: flex;
+    max-width: 150pt;
+    max-height: 150pt;
+    justify-content: center;
+    margin: 30pt 0 0 50pt;
+}
+
+.seconds {
+    font-size: 60pt;
+    top: 20pt;
+    margin-left: 40pt;
+    transform: scale(1);
+    animation: ping 1s infinite;
+    transition: 0.3s ease-in;
+}
+
+.nothing {
+    color: white;
+}
+
+.fast {
+    color: red;
+    animation: pingBig 1s infinite;
+    transition: 0.3s ease-in;
+}
+
+.medium {
+    color: yellow;
+}
+
+.slow {
+    color: lawngreen;
+}
+
+.cloader {
+    width: 10em;
+    height: 10em;
+    border: 10pt solid white;
+    border-radius: 50%;
+    margin: -80pt -76pt;
+    position: relative;
+    padding: 2rem;
+    scale: 0.5;
+}
+
+.clface {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px);
+}
+
+.top {
+    height: 20pt;
+    width: 10pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -26pt;
+    margin-left: 52pt;
+}
+
+.bottom {
+    height: 20pt;
+    width: 10pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: 120pt;
+    margin-left: 52pt;
+}
+
+.left {
+    height: 10pt;
+    width: 20pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -78pt;
+    margin-left: -28pt;
+}
+
+.right {
+    height: 10pt;
+    width: 20pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -15pt;
+    margin-left: 110pt;
+    transform: rotate(90);
+}
+
+.clsface {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-left: 24px;
+    margin-top: 15px;
+    border-radius: 6em;
+    border: 2px solid #636363;
+}
+
+.hand {
+    width: 65%;
+    height: 10pt;
+    background-color: white;
+    border-radius: 3em;
+    border: none;
+    position: absolute;
+    top: 70%;
+    left: -15%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+}
+
+.pin {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sub {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background: #636363;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#h1 {
+    animation: rotate 4s linear infinite;
+}
+
+#h2 {
+    width: 45%;
+    left: 5%;
+    top: 45%;
+    background-color: #636363;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(90deg);
+    }
+
+    to {
+        transform: rotate(450deg);
+    }
+}
+
+@keyframes ping {
+    0% {
+        font-size: 60pt;
+    }
+    100% {
+        font-size: 62pt;
+    }
+}
+
+@keyframes pingBig {
+    0% {
+        font-size: 60pt;
+    }
+    100% {
+        font-size: 65pt;
+    }
+}

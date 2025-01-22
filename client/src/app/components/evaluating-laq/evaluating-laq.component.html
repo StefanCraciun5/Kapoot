@@ -1,0 +1,13 @@
+<div class="evaluation" *ngIf="!lastAnswer">
+    <p class="title">Évaluation</p>
+    <div class="info">
+        <p class="username">{{ answersLAQ[currentUsernameIndex] }}</p>
+        <p class="answer">Réponse : {{ answersLAQ[currentAnswerIndex] }}</p>
+    </div>
+    <div class="PB-range-slider-div">
+        <p class="slider-title">Points</p>
+        <input type="range" min="0" max="100" step="50" class="PB-range-slider" id="myRange" [(ngModel)]="pointsChosen" />
+        <p class="PB-range-slidervalue">{{ pointsChosen }}</p>
+    </div>
+    <button class="button" (click)="validateAnswer()">Prochaine Réponse →</button>
+</div>

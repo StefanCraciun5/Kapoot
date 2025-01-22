@@ -1,0 +1,50 @@
+<div *ngIf="quizRenderer !== undefined">
+    <div id="toast-container" class="toast-top"></div>
+    <div class="quiz-options">
+        <div class="left-side-options">
+            <button class="button-icon save" *ngIf="quizRenderer.state.dirty" (click)="save()">
+                <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
+                </svg>
+            </button>
+            <button class="button-icon return" *ngIf="(!quizRenderer.state.dirty && !toggler.state) || quizRenderer.id === '0'" (click)="save()">
+                <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M17.026 22.957c10.957-11.421-2.326-20.865-10.384-13.309l2.464 2.352h-9.106v-8.947l2.232 2.229c14.794-13.203 31.51 7.051 14.794 17.675z"
+                    />
+                </svg>
+            </button>
+            <button class="button-icon edit" *ngIf="!quizRenderer.state.dirty && toggler.state && quizRenderer.id !== '0'" (click)="save()">
+                <svg class="svgIcon" viewBox="0 0 512 512">
+                    <path
+                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+                    ></path>
+                </svg>
+            </button>
+        </div>
+        <div class="right-side-option">
+            <button class="button-icon delete" (click)="delete()">
+                <svg
+                    class="svgIcon"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="m4.015 5.494h-.253c-.413 0-.747-.335-.747-.747s.334-.747.747-.747h5.253v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-.254v15.435c0 .591-.448 1.071-1 1.071-2.873 0-11.127 0-14 0-.552 0-1-.48-1-1.071zm14.5 0h-13v15.006h13zm-4.25 2.506c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm-4.5 0c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm3.75-4v-.5h-3v.5z"
+                        fill-rule="nonzero"
+                    />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="toggler.state && !quizRenderer.state.dirty && quizRenderer.id !== '0'">
+        <app-quiz-view [quizRenderer]="quizRenderer" (switchModeEvent)="toggler.toggle()"></app-quiz-view>
+    </div>
+    <div *ngIf="!toggler.state || quizRenderer.id === '0' || quizRenderer.state.dirty">
+        <app-quiz-edit [quizRenderer]="quizRenderer"></app-quiz-edit>
+    </div>
+</div>

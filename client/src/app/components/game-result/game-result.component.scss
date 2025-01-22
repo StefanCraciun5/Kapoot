@@ -1,0 +1,19 @@
+.game-results {
+    display: flex;
+    justify-content: center;
+}
+
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.results-histogram {
+    margin-right: 20pt;
+}
+
+.player-rankings {
+    margin: -4pt 0 0 0;
+    width: 350pt;
+}

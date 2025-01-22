@@ -1,0 +1,36 @@
+[
+    {
+      "question": "Quelle est la capitale du Japon ?",
+      "id": 0,
+      "lastModified": "2024-01-22"
+    },
+    {
+      "question": "Qui a peint la Joconde ?",
+      "id": 1,
+      "lastModified": "2024-01-28"
+    },
+    {
+      "question": "En quelle année le Titanic a-t-il coulé ?",
+      "id": 2,
+      "lastModified": "2024-01-25"
+    },
+    {
+      "question": "Quelle est la plus grande planète de notre système solaire ?",
+      "id": 3,
+      "lastModified": "2024-01-28"
+    },
+    {
+      "question": "Qui a écrit 'Ne tirez pas sur l'oiseau moqueur' ?",
+      "id": 4,
+      "lastModified": "2024-01-23"
+    },
+    {
+      "question": "Votre nouvelle question MCQ ?",
+      "id": 5,
+      "lastModified": "2024-01-29",
+      "answer": 1,
+      "options": ["Option 1", "Option 2", "Option 3"],
+      "numOfOptions": 3
+    }
+  ]
+  

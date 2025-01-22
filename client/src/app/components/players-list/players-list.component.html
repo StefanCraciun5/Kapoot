@@ -1,0 +1,90 @@
+<div class="component">
+    <div class="top">
+        <div class="list-name">Classement</div>
+        <div class="selection">
+            <select class="sort" [(ngModel)]="sortState" (ngModelChange)="onSortChange()">
+                <option class="option" value="{{ 0 }}">Trier</option>
+                <option class="option" value="{{ 1 }}">Trier par nom</option>
+                <option class="option" value="{{ 2 }}">Trier par points</option>
+                <option class="option" value="{{ 3 }}">Trier par état du jeu</option>
+            </select>
+            <button class="Btn" (click)="reverse()">Inverser</button>
+        </div>
+    </div>
+    <div class="players-list">
+        <div *ngFor="let player of players; let i = index" class="player-item">
+            <div class="item-rank">
+                <div>
+                    <p>{{ i + 1 }}</p>
+                </div>
+                <div class="medal">
+                    <svg
+                        class="medal-svg"
+                        [ngClass]="{ first: i === 0, second: i === 1, third: i === 2, noRank: i > 2 }"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M13.75 18.44l-.884.85.215 1.208-1.081-.579-1.081.579.215-1.208-.884-.85 1.215-.167.535-1.104.535 1.104 1.215.167zm3.25.56c0 2.761-2.238 5-5 5s-5-2.239-5-5 2.238-5 5-5 5 2.239 5 5zm-2 0c0-1.654-1.346-3-3-3s-3 1.346-3 3 1.346 3 3 3 3-1.346 3-3zm-5.559-17l-2.025 6.077 4.584 2.619 4.584-2.619-2.025-6.077h-5.118zm9.559 7l-7 4-7-4 3-9h8l3 9z"
+                        />
+                    </svg>
+                </div>
+            </div>
+            <div
+                class="info"
+                [ngClass]="{
+                    answered: player.isSubmitted && player.isFinal && player.isConnected,
+                    isAnswering: player.isAnswering && !player.isSubmitted && player.isConnected,
+                    noResponse: !player.isAnswering && !player.isSubmitted && player.isConnected,
+                    left: !player.isConnected
+                }"
+            >
+                <div
+                    class="item-username"
+                    [ngClass]="{
+                        disconnected: !player.isConnected
+                    }"
+                >
+                    <p class="player-name">{{ player.username }}</p>
+                    <span class="status"></span>
+                </div>
+                <div class="item-points">
+                    <p>{{ player.points }} points</p>
+                </div>
+                <div class="item-bonus">
+                    <p>{{ player.nBonus }} bonus</p>
+                </div>
+                <div class="LAQ answer" *ngIf="currentQuestion && currentQuestion.type === 'LAQ'">
+                    <p>Note: {{ (player.currentLAQPoints ?? 0) * 100 }} %</p>
+                </div>
+                <div class="switch" (click)="toggleMute(player)" *ngIf="isAdmin">
+                    <div class="mic-on">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+                            <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"></path>
+                            <path
+                                d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <div class="mic-off">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="currentColor"
+                            class="bi bi-mic-mute-fill"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4.02 4.02 0 0 0 12 8V7a.5.5 0 0 1 1 0v1zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a4.973 4.973 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4zm3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3z"
+                            ></path>
+                            <path d="M9.486 10.607 5 6.12V8a3 3 0 0 0 4.486 2.607zm-7.84-9.253 12 12 .708-.708-12-12-.708.708z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

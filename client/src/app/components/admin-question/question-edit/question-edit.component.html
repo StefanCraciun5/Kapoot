@@ -1,0 +1,128 @@
+<div class="card">
+    <div class="question-options">
+        <button class="button-icon save" *ngIf="renderer.state.dirty" (click)="saveQuestion()">
+            <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
+            </svg>
+        </button>
+        <button class="button-icon return" *ngIf="!renderer.state.dirty && context !== createContext && validateOptions()" (click)="saveQuestion()">
+            <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                    d="M17.026 22.957c10.957-11.421-2.326-20.865-10.384-13.309l2.464 2.352h-9.106v-8.947l2.232 2.229c14.794-13.203 31.51 7.051 14.794 17.675z"
+                />
+            </svg>
+        </button>
+        <button class="button-icon delete" *ngIf="context !== createContext" (click)="deleteQuestion()">
+            <svg
+                class="svgIcon"
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                stroke-linejoin="round"
+                stroke-miterlimit="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="m4.015 5.494h-.253c-.413 0-.747-.335-.747-.747s.334-.747.747-.747h5.253v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-.254v15.435c0 .591-.448 1.071-1 1.071-2.873 0-11.127 0-14 0-.552 0-1-.48-1-1.071zm14.5 0h-13v15.006h13zm-4.25 2.506c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm-4.5 0c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm3.75-4v-.5h-3v.5z"
+                    fill-rule="nonzero"
+                />
+            </svg>
+        </button>
+    </div>
+    <div class="question-type">
+        <p class="q" [ngClass]="{ 'is-qrl': !isQCM }">QRL</p>
+        <label class="switch">
+            <input type="checkbox" [(ngModel)]="isQCM" (click)="switchQuestionType()" />
+            <span class="slider"></span>
+        </label>
+        <p class="q" [ngClass]="{ 'is-qcm': isQCM }">QCM</p>
+    </div>
+    <div class="is-valid" *ngIf="!validateOptions()">
+        <p>Question Invalide</p>
+    </div>
+    <div class="question-name">
+        <div class="inputGroup question-title">
+            <label for="question-desc">Question</label>
+            <input type="text" id="question-desc" autocomplete="off" [(ngModel)]="question" (input)="trackQuestionChanges()" required />
+        </div>
+    </div>
+    <div class="PB-range-slider-div">
+        <input
+            type="range"
+            min="10"
+            max="100"
+            step="10"
+            [(ngModel)]="points"
+            class="PB-range-slider"
+            id="myRange"
+            (input)="trackPointsChanges()"
+            required
+        />
+        <p class="PB-range-slidervalue">{{ points }} points</p>
+    </div>
+    <div *ngIf="isQCM">
+        <div (input)="trackOptionsModification()">
+            <div cdkDropList (cdkDropListDropped)="drop($event)">
+                <!-- Drag and drop area -->
+                <div *ngFor="let option of options; let i = index" cdkDrag>
+                    <div class="options-div">
+                        <div class="inputGroup">
+                            <label for="option-desc">Option {{ i + 1 }}</label>
+                            <input type="text" id="option-desc" autocomplete="off" [(ngModel)]="option.choice" required />
+                        </div>
+
+                        <div class="checkbox-wrapper">
+                            <label class="toggleButton">
+                                <input type="checkbox" [(ngModel)]="option.isCorrect" />
+                                <div>
+                                    <svg viewBox="0 0 44 44">
+                                        <path
+                                            transform="translate(-2.000000, -2.000000)"
+                                            d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
+                                        ></path>
+                                    </svg>
+                                </div>
+                            </label>
+                        </div>
+                        <div>
+                            <button class="bin-button" *ngIf="options.length > 2" (click)="deleteOption(i)">
+                                <svg class="bin-top" viewBox="0 0 39 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                    <line x1="12" y1="1.5" x2="26.0357" y2="1.5" stroke="white" stroke-width="3"></line>
+                                </svg>
+                                <svg class="bin-bottom" viewBox="0 0 33 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="path-1-inside-1_8_19" fill="white">
+                                        <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
+                                    </mask>
+                                    <path
+                                        d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                        fill="white"
+                                        mask="url(#path-1-inside-1_8_19)"
+                                    ></path>
+                                    <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                    <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="button-icon add" *ngIf="options.length < 4" (click)="addOption()">
+            <svg
+                class="svgIcon"
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                stroke-linejoin="round"
+                stroke-miterlimit="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm0 1.5c-4.69 0-8.497 3.808-8.497 8.498s3.807 8.497 8.497 8.497 8.498-3.807 8.498-8.497-3.808-8.498-8.498-8.498zm-.747 7.75h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+                    fill-rule="nonzero"
+                />
+            </svg>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<span>
+    <app-question-view
+        *ngIf="!toggler.state"
+        [renderer]="questionRenderer"
+        [questionNumber]="questionNumber"
+        [toggler]="toggler"
+        [isInQuestionBank]="quizRenderer === undefined"
+        (addToQBEvent)="addToQuestionBank()"
+    ></app-question-view>
+    <app-question-edit
+        #editQuestion
+        *ngIf="toggler.state"
+        [renderer]="questionRenderer"
+        [context]="context"
+        (saveEvent)="save()"
+        (deleteEvent)="delete()"
+        (switchQuestionTypeEvent)="toggleQuestionType()"
+    ></app-question-edit>
+</span>

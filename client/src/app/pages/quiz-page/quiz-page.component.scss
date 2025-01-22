@@ -1,0 +1,195 @@
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9999;
+    background: black;
+}
+
+h2 {
+    background: linear-gradient(to right, #e81cff, #40c9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    font-size: 25pt;
+    justify-content: center;
+    margin: auto 10pt 0 20pt;
+}
+
+.content {
+    margin-top: 70pt;
+    display: flex;
+}
+
+.add-mcq {
+    margin: 30pt 0 20pt auto;
+}
+
+input {
+    display: flex;
+    flex-direction: column;
+    width: 200pt;
+    background-color: black;
+    justify-content: center;
+    border-radius: 10px;
+    transition: 1s;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.value {
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    color: white;
+    display: flex;
+    position: relative;
+    gap: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 1s;
+    box-sizing: border-box;
+}
+
+.value:not(:active):hover,
+.value:focus {
+    background: linear-gradient(to right, #ff5733, #ffbd33);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.value:focus,
+.value:active {
+    background-color: #1a1f24;
+    outline: none;
+}
+
+.value::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -15px;
+    width: 5px;
+    height: 80%;
+    background-color: #2f81f7;
+    border-radius: 5px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.value:focus::before,
+.value:active::before {
+    opacity: 1;
+}
+
+.value svg {
+    width: 20px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.menu {
+    position: absolute;
+    top: 5%;
+    left: 15pt;
+}
+
+/* Question options */
+.question-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Question bank button */
+.button-icon {
+    width: 50pt;
+    height: 50pt;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.svgIcon {
+    width: 24pt;
+    height: 24pt;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.button-icon:hover {
+    width: 140pt;
+    border-radius: 60pt;
+    transition-duration: 0.5s;
+    align-items: center;
+}
+
+.button-icon:hover .svgIcon {
+    width: 30pt;
+    transition-duration: 0.5s;
+    transform: translateY(60%);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.button-icon:hover::before {
+    display: block;
+    padding-right: 10px;
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(0px);
+    transition-duration: 0.3s;
+}
+
+/* question bank */
+.fixed-btn::before {
+    content: 'Banque';
+    color: white;
+    font-size: 14px;
+}
+
+.fixed-btn {
+    height: 50pt;
+    width: 100pt;
+    border-radius: 60pt;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.fixed-btn:hover {
+    background-color: forestgreen;
+}

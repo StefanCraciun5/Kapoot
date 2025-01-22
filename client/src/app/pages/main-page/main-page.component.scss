@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: black;
+}
+
+.main-view {
+    position: absolute;
+    left: auto;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+#toothless-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+#options {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20pt;
+}
+
+.main-page-button {
+    background-color: red;
+    color: white;
+    padding: 5pt;
+    margin: 5pt;
+    border: none;
+    cursor: pointer;
+    border-radius: 20pt;
+}
+
+.main-page-button:hover {
+    background-color: darkred;
+    border: 20pt red;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* buttons */
+
+button {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #149cea;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: black;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+button::before {
+    content: '';
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: black;
+    transition: 0.5s;
+}
+
+button:hover::before,
+button:hover::after {
+    transform: scale(0);
+}
+
+button:hover {
+    box-shadow: inset 0px 0px 25px #1479ea;
+}

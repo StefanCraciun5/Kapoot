@@ -1,0 +1,40 @@
+<head>
+    <title>Kapoot</title>
+</head>
+<body>
+    <div>
+        <div class="navigation">
+            <app-menu class="menu"></app-menu>
+            <div>
+                <app-admin-quiz [quizRenderer]="quizRenderer" [communicationService]="communicationService"></app-admin-quiz>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="questions">
+                <div class="question-options">
+                    <h2>Questions</h2>
+                    <button class="fixed-btn" (click)="openModal()">
+                        <svg
+                            class="svgIcon"
+                            width="24"
+                            height="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            fill="white"
+                        >
+                            <path d="M23 24v-20h-8v2h6v16h-18v-16h6v-2h-8v20h22zm-12-13h-4l5 6 5-6h-4v-11h-2v11z" />
+                        </svg>
+                    </button>
+                </div>
+                <div *ngIf="questionIDs !== undefined">
+                    <app-question-list [path]="'/quiz'" [questions]="questionIDs" [quizRenderer]="quizRenderer"></app-question-list>
+                </div>
+            </div>
+            <div class="add-mcq">
+                <app-add-qcm [quizRenderer]="quizRenderer"></app-add-qcm>
+            </div>
+        </div>
+    </div>
+</body>

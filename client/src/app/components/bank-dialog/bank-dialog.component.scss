@@ -1,0 +1,72 @@
+.package {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: black;
+    color: white;
+}
+
+.package2 {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid white; /* Added border */
+}
+
+.package2 h1 {
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Make the text color transparent */
+    font-size: 24px;
+    margin: auto;
+    justify-content: center;
+    display: grid;
+}
+
+.package2 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.package2 li {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.package2 li:hover {
+    background-color: #af40ff;
+}
+
+.package2 li.selected-question {
+    background-color: purple;
+    font-style: italic;
+}
+
+.package2 li span {
+    display: inline-block;
+    width: 100%;
+}
+
+.package2 button {
+    background-color: black;
+    color: #fff;
+    border: 2pt solid white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 20pt 10pt;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.package2 .close:hover {
+    background-color: red;
+}
+
+.package2 .export:hover {
+    background-color: green;
+}

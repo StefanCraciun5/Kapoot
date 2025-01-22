@@ -1,0 +1,56 @@
+<div class="game-question">
+    <div class="info">
+        <div *ngIf="question" class="question">
+            {{ question.question }}
+        </div>
+        <div class="time">
+            <div class="cloader">
+                <div class="clface">
+                    <div class="top"></div>
+                    <div class="bottom"></div>
+                    <div class="left"></div>
+                    <div class="right"></div>
+                    <div id="h1" class="hand"></div>
+                    <div id="main" class="pin"></div>
+                </div>
+            </div>
+            <p>
+                <em class="seconds" [ngClass]="{ fast: timer < 20, medium: timer >= 20 && timer < 40, slow: timer >= 40 }">
+                    {{ timer }}
+                </em>
+            </p>
+        </div>
+    </div>
+    <div *ngIf="question.type === 'MCQ' && nextQuestionCalled" class="options">
+        <div
+            class="package"
+            *ngFor="let choice of question.choices; let i = index"
+            (click)="onChoiceClick(choice)"
+            [ngClass]="{ selected: isChoiceSelected(choice) }"
+        >
+            <div class="package2">
+                <p class="text">{{ i + 1 }}. {{ choice.choice }}</p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="question.type === 'LAQ'">
+        <textarea
+            type="text"
+            class="laq-answer-field"
+            [(ngModel)]="LAQanswer"
+            placeholder="Veuillez saisir votre réponse."
+            (ngModelChange)="handleLAQInputChanges($event)"
+        ></textarea>
+        <p
+            [ngClass]="{
+                goodAnswerLength: isAnswerLengthCorrect(),
+                badAnswerLength: !isAnswerLengthCorrect()
+            }"
+        >
+            {{ LAQanswer.length }}/200 caractères
+        </p>
+    </div>
+    <div class="submit" *ngIf="nextQuestionCalled">
+        <button class="btn-submit" (click)="submitAnswer()">Soumettre</button>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<head class="app-title">
+    <title>Kapoot</title>
+</head>
+<header>
+    <app-header></app-header>
+</header>
+<body>
+    <div class="form-container">
+        <div class="logo-container">Entrer votre mot de passe</div>
+        <form class="form">
+            <p class="invalid-pw" *ngIf="isInvalidePW">* Le mot de passe est invalide</p>
+            <div class="pw-input">
+                <input class="input" name="text" placeholder="Mot de passe" type="password" [(ngModel)]='inputPassword'>
+            </div>
+            <button class="form-submit-btn" type="submit" (click)="authenticate()" [ngClass]="{'available' : inputPassword.length > 0, 'unavailable' : !inputPassword}">
+                <div>Se connecter</div>
+            </button>
+        </form>
+    </div>
+</body>
+<footer>
+    <app-footer></app-footer>
+</footer>
+

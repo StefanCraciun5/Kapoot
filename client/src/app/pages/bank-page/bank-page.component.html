@@ -1,0 +1,39 @@
+<head>
+    <title>Kapoot</title>
+</head>
+<body>
+    <div class="page-content">
+        <app-menu class="menu"></app-menu>
+        <div>
+            <h1>Banque de Questions</h1>
+            <div class="sort-btn">
+                <input type="checkbox" id="checkbox" class="checkbox-input" />
+                <label for="checkbox" class="sort-label">
+                    <div class="switch">
+                        Filtrer
+                        <svg class="slider" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8 10v4h4l-6 7-6-7h4v-4h-4l6-7 6 7h-4zm16 5h-10v2h10v-2zm0 6h-10v-2h10v2zm0-8h-10v-2h10v2zm0-4h-10v-2h10v2zm0-4h-10v-2h10v2z"
+                            />
+                        </svg>
+                    </div>
+                    <div class="tooltip-text">
+                        <div class="element" (click)="callFilterMCQ()" [ngClass]="{ selected: filterMCQ }">Filtrer QCM</div>
+                        <div class="element" (click)="callFilterLAQ()" [ngClass]="{ selected: filterLAQ }">Filtrer QRL</div>
+                    </div>
+                </label>
+            </div>
+            <div class="content">
+                <div class="question-list" *ngIf="questionIDs.length !== 0">
+                    <app-question-list
+                        #questionList
+                        [path]="'question-bank'"
+                        [questions]="questionIDs"
+                        [questionsMod]="lastModifs"
+                    ></app-question-list>
+                </div>
+                <app-add-qcm class="add-question"></app-add-qcm>
+            </div>
+        </div>
+    </div>
+</body>

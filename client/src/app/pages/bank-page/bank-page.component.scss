@@ -1,0 +1,155 @@
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9999;
+    background: black;
+}
+
+.menu {
+    position: absolute;
+    top: 5%;
+    left: 10pt;
+}
+
+.add-question {
+    position: absolute;
+    top: 15%;
+    right: 10pt;
+}
+
+.page-content {
+    margin-left: 200pt;
+    margin-right: 280pt;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    display: flex;
+}
+
+.question-list {
+    margin: 25pt 0 20pt 10pt;
+}
+
+h1 {
+    background: linear-gradient(to right, #e81cff, #40c9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    font-size: 25pt;
+    justify-content: center;
+    margin: 25pt;
+}
+
+.content.question-list {
+    margin-bottom: 40pt;
+}
+
+footer {
+    margin-top: 50pt;
+}
+
+/* Sort button */
+
+.sort-btn {
+    display: block;
+    width: 65pt;
+    margin-left: 30pt;
+}
+
+#checkbox {
+    display: none;
+}
+
+label.sort-label {
+    width: 65pt;
+    max-width: 65pt;
+}
+
+.switch {
+    position: relative;
+    width: 65pt;
+    padding: 10px 20px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 50px;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    color: white;
+    font-size: 0.9em;
+    transition: all 0.3s;
+}
+.switch svg path {
+    fill: white;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 160px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 60pt;
+    left: 390pt;
+    margin-left: -80px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-text::after {
+    content: '';
+    position: absolute;
+    rotate: 90;
+    top: 50%;
+    left: 0%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.checkbox-input {
+    position: absolute;
+    cursor: pointer;
+}
+
+.checkbox-input:checked + .sort-label .switch {
+    background-color: rgb(136, 0, 255);
+}
+
+.checkbox-input:checked + .sort-label .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.switch:hover {
+    background-color: rgb(174, 0, 255);
+}
+
+.element {
+    padding: 5pt;
+    border-radius: 10pt;
+    margin: 1pt;
+}
+
+.selected {
+    background-color: rgb(92, 92, 92);
+}
+
+.element:hover {
+    background-color: #5f0c69;
+    cursor: pointer;
+}

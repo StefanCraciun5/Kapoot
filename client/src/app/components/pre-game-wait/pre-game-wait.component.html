@@ -1,0 +1,30 @@
+<div class="countdown-timer">
+    <div>
+        <p class="start">La partie commence...</p>
+    </div>
+    <div class="time">
+        <div class="cloader">
+            <div class="clface">
+                <div class="top"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div id="h1" class="hand"></div>
+                <div id="main" class="pin"></div>
+            </div>
+        </div>
+        <p>
+            <em
+                class="seconds"
+                [ngClass]="{
+                    fast: timer < 20,
+                    medium: timer >= 20 && timer < 40,
+                    slow: timer >= 40
+                }"
+            >
+                {{ timer }}
+            </em>
+            secondes
+        </p>
+    </div>
+</div>

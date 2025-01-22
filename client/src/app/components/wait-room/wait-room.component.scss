@@ -1,0 +1,204 @@
+.error-message {
+    margin: 5pt 0 -3pt 35pt;
+    opacity: 0;
+    color: red;
+    transition: 0.3s ease-in;
+}
+
+.error {
+    opacity: 1;
+}
+
+.wait-room {
+    width: 400pt;
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.room-id {
+    font-size: 24pt;
+    align-items: center;
+    justify-content: center;
+    margin: 20pt;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 250pt;
+    width: fit-content;
+    margin: 30pt;
+}
+
+/* Lock room */
+
+.btn-lock {
+    position: relative;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    display: inline-block;
+    background: #ff5b5b;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    padding: 12px 0 0 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-lock svg {
+    fill: none;
+    transform: translate3d(0, 0, 0);
+}
+
+.btn-lock svg .bling {
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 3;
+    stroke-dashoffset: 15;
+    transition: all 0.3s ease;
+}
+
+.btn-lock svg .lock {
+    stroke: #fff;
+    stroke-width: 4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-dasharray: 36;
+    transition: all 0.4s ease;
+}
+
+.btn-lock svg .lockb {
+    fill: #fff;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    transform: rotate(8deg);
+    transform-origin: 14px 20px;
+    transition: all 0.2s ease;
+}
+
+#inpLock {
+    display: none;
+}
+
+#inpLock:checked + label {
+    background: #20cca5;
+}
+
+#inpLock:checked + label svg {
+    opacity: 1;
+}
+
+#inpLock:checked + label svg .bling {
+    animation: bling6132 0.3s linear forwards;
+    animation-delay: 0.2s;
+}
+
+#inpLock:checked + label svg .lock {
+    stroke-dasharray: 48;
+    animation: locked 0.3s linear forwards;
+}
+
+#inpLock:checked + label svg .lockb {
+    transform: rotate(0);
+    transform-origin: 14px 22px;
+}
+
+@keyframes bling6132 {
+    50% {
+        stroke-dasharray: 3;
+        stroke-dashoffset: 12;
+    }
+
+    100% {
+        stroke-dasharray: 3;
+        stroke-dashoffset: 9;
+    }
+}
+
+@keyframes locked {
+    50% {
+        transform: translateY(1px);
+    }
+}
+
+/* Start game button */
+
+.start-game {
+    transition: 0.4s ease-in;
+    opacity: 0;
+    display: none;
+}
+
+.locked {
+    opacity: 1;
+    display: block;
+}
+
+.btn {
+    --color: #d44d4d;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    border: none;
+    background-color: transparent;
+}
+
+.btn div {
+    letter-spacing: 2px;
+    font-weight: bold;
+    background: var(--color);
+    border-radius: 2rem;
+    color: black;
+    padding: 1rem;
+    margin: auto;
+}
+
+.btn::before {
+    content: '';
+    z-index: -1;
+    background-color: var(--color);
+    border: 2px solid black;
+    border-radius: 2rem;
+    width: 110%;
+    height: 100%;
+    position: absolute;
+    transform: rotate(10deg);
+    transition: 0.5s;
+    opacity: 0.2;
+}
+
+.btn:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+.btn:hover::before {
+    transform: rotate(0deg);
+    opacity: 1;
+}
+
+.btn svg {
+    transform: translateX(-200%);
+    transition: 0.5s;
+    width: 0;
+    opacity: 0;
+}
+
+.btn:hover svg {
+    width: 25px;
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.btn:active {
+    filter: brightness(1.4);
+}

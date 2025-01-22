@@ -1,0 +1,37 @@
+.main-container {
+    display: flex; /* Use flexbox to layout the children horizontally */
+    flex-direction: row; /* Align children in a row */
+    width: 100%; /* Container should take the full width of its parent */
+    height: 100%; /* Container should take the full height of its parent */
+    align-items: stretch; /* Stretch children to fill the container height */
+    justify-content: space-between; /* Space between the children */
+    background-color: #121212; /* Dark background for the entire container */
+}
+
+.app-play-area {
+    flex-grow: 2; /* Allow play area to take more space */
+    background-color: #1e1e1e; /* A slightly lighter dark background for the play area */
+    padding: 20px; /* Some padding around the content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds depth with a shadow */
+    color: white;
+}
+
+.app-chat-area {
+    flex-grow: 1; /* Chat area takes less space than the play area */
+    background-color: #252525; /* A dark background for contrast */
+    padding: 20px; /* Consistent padding with the play area */
+    overflow-y: auto; /* Allows scrolling within the chat area */
+    box-shadow: inwards 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds depth with a shadow */
+}
+
+@media screen and (max-width: 780px) {
+    .main-container {
+        flex-direction: column; /* Stack children vertically on small screens */
+    }
+    .app-play-area,
+    .app-chat-area {
+        flex-grow: 1; /* Make both areas equal in importance on small screens */
+        width: 100%; /* Each child should take full width */
+        background-color: #1e1e1e; /* Consistent dark background for both */
+    }
+}

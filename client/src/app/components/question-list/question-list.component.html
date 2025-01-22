@@ -1,0 +1,32 @@
+<span>
+    <div *ngIf="questionRenderers.length !== 0">
+        <div *ngIf="quizRenderer" cdkDropList (cdkDropListDropped)="drop($event)" class="list">
+            <!-- Drag and drop area -->
+            <div class="question-list" *ngFor="let questionRenderer of questionRenderers; let i = index" [(ngModel)]="questions" cdkDrag>
+                <app-admin-question
+                    class="question-item"
+                    [questionRenderer]="questionRenderer"
+                    [defaultState]="false"
+                    [context]="context"
+                    [quizRenderer]="quizRenderer"
+                    [questionNumber]="i + 1"
+                >
+                </app-admin-question>
+            </div>
+        </div>
+        <div *ngIf="!quizRenderer" class="list">
+            <div class="question-list" *ngFor="let questionRenderer of questionRenderers; let i = index" [(ngModel)]="questions">
+                <app-admin-question
+                    class="question-item"
+                    [questionRenderer]="questionRenderer"
+                    [defaultState]="false"
+                    [context]="context"
+                    [quizRenderer]="quizRenderer"
+                    [questionNumber]="i + 1"
+                >
+                </app-admin-question>
+            </div>
+        </div>
+    </div>
+    <p *ngIf="questionRenderers.length === 0">Aucune question dans le questionnaire</p>
+</span>

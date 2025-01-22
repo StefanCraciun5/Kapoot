@@ -1,0 +1,455 @@
+.edit-quiz {
+    color: white;
+}
+
+h1 {
+    margin: 0 auto 20pt auto;
+    justify-content: center;
+    display: grid;
+    background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.quote-icon {
+    height: 16pt;
+    width: 16pt;
+    margin: 0 5pt 0 10pt;
+}
+
+.title-element {
+    display: flex;
+    justify-content: center;
+    margin: 10pt auto 20pt auto;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 20pt auto;
+}
+
+.time {
+    margin: 0 0 20pt 0;
+}
+
+/* Title */
+
+.wave-group {
+    position: relative;
+}
+
+.wave-group .input {
+    font-size: 2em;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: fit-content;
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: linear-gradient(to right, red, gold); /* Example gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    caret-color: white; /* Example color */
+    text-transform: capitalize;
+    position: relative; /* Add position relative */
+}
+
+.wave-group .input:focus {
+    outline: none;
+}
+
+.wave-group .label {
+    width: fit-content;
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    display: flex;
+}
+
+.wave-group .label-char {
+    transition: 0.2s ease all;
+    transition-delay: calc(var(--index) * 0.05s);
+}
+
+.wave-group .input:focus ~ label .label-char,
+.wave-group .input:valid ~ label .label-char {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: black;
+    opacity: 0; /* Add opacity property to hide the label */
+}
+
+.wave-group .bar {
+    position: absolute;
+    display: flex;
+    width: 100%; /* Adjust width to match input field */
+    bottom: 0; /* Align to the bottom of the input field */
+    left: 0; /* Align to the left of the input field */
+}
+
+.wave-group .bar:before,
+.wave-group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: linear-gradient(to right, red, gold);
+    transition: 0.2s ease all;
+}
+
+.wave-group .bar:before {
+    left: 0;
+}
+
+.wave-group .bar:after {
+    right: 0;
+}
+
+.wave-group .input:focus ~ .bar:before,
+.wave-group .input:focus ~ .bar:after {
+    width: 100%;
+}
+
+.visible-dot {
+    position: absolute;
+    width: 7pt;
+    height: 7pt;
+    border-radius: 50%; /* Ensure the div is circular */
+    margin: 10pt 20pt 0 0;
+    transition: background-color 0.2s ease-in;
+    animation: ping 2s infinite;
+}
+
+.visible-dot.red {
+    background-color: red;
+}
+
+.visible-dot.green {
+    background-color: greenyellow;
+}
+
+@keyframes ping {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.tooltip {
+    opacity: 0;
+    position: relative;
+    bottom: -25pt; /* Adjust the distance from the dot */
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    margin-left: 120pt;
+    padding: 5pt;
+    border-radius: 10pt;
+    white-space: nowrap; /* Prevent line breaks */
+    transition: opacity 0.3s ease-in;
+}
+
+.visible:hover .tooltip {
+    opacity: 1;
+}
+
+/* Description */
+.input {
+    outline: 0;
+    border: 1px solid rgb(219, 213, 213);
+    padding: 8px 14px;
+    border-radius: 8px;
+    width: 100%;
+    height: 50px;
+}
+
+textarea {
+    border-radius: 8px;
+    height: 100px;
+    width: fit-content;
+    resize: none;
+    outline: 0;
+    padding: 8px 14px;
+    border: 1px solid rgb(219, 213, 213);
+    background-color: black;
+    color: white;
+}
+
+/* slidder */
+
+.PB-range-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    background: #d5dbe1;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+.PB-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.PB-range-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.16);
+    transition: 0.3s ease-in-out;
+}
+
+.PB-range-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.PB-range-slider-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2pt;
+    border-radius: 6pt;
+    border: 1px solid #c6cace;
+    transition: box-shadow 0.2s ease-in;
+}
+
+.fast .PB-range-slider-div {
+    box-shadow: 0 1pt 2pt 0 red;
+}
+
+.medium .PB-range-slider-div {
+    box-shadow: 0 1pt 2pt 0 yellow;
+}
+
+.slow .PB-range-slider-div {
+    box-shadow: 0 1pt 2pt 0 lawngreen;
+}
+
+/* timer */
+
+.time {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    transition: color 0.2s ease-in;
+}
+
+.seconds {
+    font-size: 18pt;
+}
+
+.nothing {
+    color: white;
+}
+
+.fast {
+    color: red;
+}
+
+.medium {
+    color: yellow;
+}
+
+.slow {
+    color: lawngreen;
+}
+
+.cloader {
+    width: 10em;
+    height: 10em;
+    border: 10pt solid white;
+    border-radius: 50%;
+    margin: -70pt -70pt;
+    position: relative;
+    padding: 2rem;
+    scale: 0.1;
+}
+
+.clface {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px);
+}
+
+.top {
+    height: 20pt;
+    width: 10pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -26pt;
+    margin-left: 57pt;
+}
+
+.bottom {
+    height: 20pt;
+    width: 10pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: 141pt;
+    margin-left: 57pt;
+}
+
+.left {
+    height: 10pt;
+    width: 20pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -95pt;
+    margin-left: -28pt;
+}
+
+.right {
+    height: 10pt;
+    width: 20pt;
+    content: '';
+    background-color: white;
+    border-radius: 5em;
+    margin-top: -10pt;
+    margin-left: 130pt;
+}
+
+.clsface {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-left: 24px;
+    margin-top: 15px;
+    border-radius: 6em;
+    border: 2px solid #636363;
+}
+
+.hand {
+    width: 65%;
+    height: 10pt;
+    background-color: white;
+    border-radius: 3em;
+    border: none;
+    position: absolute;
+    top: 70%;
+    left: -15%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+}
+
+.pin {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sub {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background: #636363;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#h1 {
+    animation: rotate 4s linear infinite;
+}
+
+#h2 {
+    width: 45%;
+    left: 5%;
+    top: 45%;
+    background-color: #636363;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(90deg);
+    }
+
+    to {
+        transform: rotate(450deg);
+    }
+}
+
+/* eye toggle */
+[id^='checkboxInput'] {
+    display: none;
+    padding: 10pt;
+}
+
+.visible {
+    position: relative;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+}
+
+.visible:hover .tooltip {
+    opacity: 1;
+    transition-duration: 0.3s;
+}
+
+.visible:hover .eye-open {
+    stroke: white;
+    fill: black;
+    transition: all 0.3s ease-in;
+}
+
+.visible:hover .eye-close {
+    stroke: white;
+    fill: black;
+    transition: all 0.3s ease-in;
+}
+
+.eye-open {
+    stroke: black;
+    fill: white;
+    transition: all 0.3s ease-in;
+}
+
+.eye-close {
+    stroke: black;
+    fill: white;
+    transition: all 1s ease-in;
+}

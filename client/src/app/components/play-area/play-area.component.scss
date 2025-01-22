@@ -1,0 +1,105 @@
+/* Base page styles */
+body {
+    background: #121212; /* Dark background for contrast */
+    color: white; /* White text for readability */
+    font-family: 'Arial', sans-serif; /* Modern, readable font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Game question section */
+.game-question {
+    text-align: center; /* Center all content */
+    width: 80%; /* Adjust width as necessary */
+    max-width: 600px; /* Max width to prevent overly wide elements on larger screens */
+    margin: auto; /* Center the game-question in the available space */
+    color: white;
+}
+
+.header {
+    font-size: 1.5em; /* Larger text for the question */
+    margin-bottom: 0.5em; /* Space after the header */
+    color: white;
+}
+
+/* Points for the question */
+.points {
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+/* Timer display */
+.timer {
+    font-size: 1.25em; /* Slightly smaller than the question for hierarchy */
+    margin-bottom: 1em; /* Space before the options */
+    color: white;
+}
+
+/* Grid for MCQ options */
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for options */
+    grid-gap: 10px; /* Space between options */
+    margin-bottom: 1em; /* Space after the options before the submit button */
+}
+
+.option:hover {
+    border-color: #9c27b0; /* Purple border on hover */
+    border-style: solid;
+    border-width: 3px;
+}
+
+/* Individual option styling */
+.option {
+    background: #333; /* Dark background for the option */
+    color: white; /* White text for readability */
+    padding: 20px; /* Padding inside options */
+    border-radius: 10px; /* Rounded corners for the options */
+    margin: 10px 0; /* Margin around options */
+    cursor: pointer; /* Pointer to indicate clickable options */
+}
+
+.option.selected {
+    background-color: #9c27b0; /* Purple background for selected option */
+}
+
+/* Submit button styling */
+.btn-submit {
+    background-color: #23c483; /* Bright color for visibility */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px; /* Rounded edges for the button */
+    font-size: 1em;
+    margin-bottom: 1em; /* Space before the total points */
+    cursor: pointer; /* Pointer to indicate button is clickable */
+}
+
+.btn-submit:hover {
+    background-color: #1faa72; /* Darker shade on hover for interaction feedback */
+}
+
+/* Footer for total points */
+.footer {
+    font-size: 1.25em; /* Slightly larger font size for total points */
+    color: white;
+}
+
+/* Media query for responsiveness on smaller screens */
+@media (max-width: 600px) {
+    .game-question {
+        width: 95%; /* More width for smaller screens */
+    }
+
+    .options {
+        grid-template-columns: 1fr; /* Single column for options on small screens */
+    }
+
+    .option {
+        margin: 10px auto; /* Center options with automatic horizontal margins */
+    }
+}

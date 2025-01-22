@@ -1,0 +1,116 @@
+.evaluation {
+    margin: 65pt 0 0 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid white 1pt;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5pt;
+    width: 290px;
+}
+
+.title {
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 18px;
+}
+
+/* Slider */
+.PB-range-slider {
+    -webkit-appearance: none;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 100px;
+    height: 4px;
+    border-radius: 5px;
+    background: #d5dbe1;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+.slider-title {
+    color: white;
+    position: absolute;
+    top: 5%;
+    left: 40%;
+}
+
+.PB-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.PB-range-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.16);
+    transition: 0.3s ease-in-out;
+}
+
+.PB-range-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+.PB-range-slider-div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 138px;
+    gap: 1rem;
+    padding: 2rem 1rem 2rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #c6cace;
+    box-shadow: 0px 1px 2px 0px #1f1e241f;
+}
+
+.info {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PB-range-slidervalue {
+    position: absolute;
+    color: white;
+    top: 40%;
+    right: 10%;
+}
+
+/* Next Question */
+
+.button {
+    --font-color: #fefefe;
+    --bg-color: #111;
+    --main-color: #fefefe;
+    width: 120px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+}
+
+.button:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+}

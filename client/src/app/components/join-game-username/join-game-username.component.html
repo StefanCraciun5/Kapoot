@@ -1,0 +1,14 @@
+<div>
+    <div class="send-username">
+        <p class="title">Joindre la partie</p>
+        <div class="input-wrapper">
+            <input class="input-box" type="text" placeholder="Enter le nom du joueur" [(ngModel)]="userName" />
+            <p [ngClass]="{ error: invalidUsername }" class="error-message">Le nom est invalide, veuillez choisir un nouveau nom.</p>
+            <span class="underline"></span>
+        </div>
+        <button (click)="sendUserName()">
+            <span class="join">Joindre</span>
+        </button>
+        <p [ngClass]="{ error: invalidCode }" class="error-message">La partie n'est plus accessible.</p>
+    </div>
+</div>
