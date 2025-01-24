@@ -13,6 +13,15 @@ export class DatabaseService {
             process.env.MONGO_PASSWORD || 'projet3'
         }@clusterprojet3.zbyro.mongodb.net/`;
     }
+    /*this.uri = `mongodb+srv://${process.env.MONGO_USERNAME || 'team107'}:${
+            process.env.MONGO_PASSWORD || 'team107PW'
+        }@atlascluster.xfdj1vk.mongodb.net/?retryWrites=true&w=majority`;
+    */
+
+    /*this.uri = `mongodb+srv://${process.env.MONGO_USERNAME || 'cstefang'}:${
+            process.env.MONGO_PASSWORD || 'projet3'
+        }@clusterprojet3.zbyro.mongodb.net/`;
+    }*/    
     //mongodb+srv://cstefang:<db_password>@clusterprojet3.zbyro.mongodb.net/
     async connectToDatabase(uri?: string): Promise<void> {
         try {
